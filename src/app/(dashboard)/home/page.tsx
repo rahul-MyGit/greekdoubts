@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="m-2">
-      Home Page
+      Home Page in Dashboard
       <Link href={'/profile/3'}>
       <Button className="ml-2">Click me</Button>
       </Link>
