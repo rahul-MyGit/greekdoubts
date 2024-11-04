@@ -1,12 +1,9 @@
-import { Sidebar } from "@/components/ui/sidebar";
+import { SideBarMain } from "@/components/SideBarMain";
 
 export default function Home() {
   return (
-    <div className="m-2">
-      Home Page in Dashboard
-      <Sidebar open={true} animate={true}>
-        heheeeheehe
-      </Sidebar>
+    <div>
+      <SideBarMain />
     </div>
   );
 }
