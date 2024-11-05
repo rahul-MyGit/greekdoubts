@@ -21,21 +21,17 @@ export const authMiddleware = auth((req) => {
     const isHomePage = req.nextUrl.pathname === '/';
     const isPublicFile = req.nextUrl.pathname.includes('.');
   
-    // Allow access to public files and auth-related pages
     if (isPublicFile) {
       return NextResponse.next();
     }
   
-    // Allow home page for everyone
     if (isHomePage) {
       return NextResponse.next();
     }
   
-    // Redirect to home if not logged in
     if (!isLoggedIn) {
       return NextResponse.redirect(new URL('/', req.nextUrl));
     }
   
-    // Allow access to all other routes for logged-in users
     return NextResponse.next();
   });
