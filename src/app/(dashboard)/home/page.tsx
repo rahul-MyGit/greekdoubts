@@ -1,9 +1,11 @@
 import { SideBarMain } from "@/components/SideBarMain";
+import { auth } from "@/lib/auth";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth()
   return (
     <div>
-      <SideBarMain />
+      <SideBarMain session={session}/>
     </div>
   );
 }

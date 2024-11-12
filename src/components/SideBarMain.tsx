@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
 import {
   IconArrowLeft,
@@ -12,7 +12,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-export function SideBarMain() {
+export function SideBarMain({session}: any) {
+
   const links = [
     {
       label: "HOME",
@@ -43,7 +44,9 @@ export function SideBarMain() {
       ),
     },
   ];
+
   const [open, setOpen] = useState(false);
+
   return (
     <div
       className={cn(
@@ -64,11 +67,11 @@ export function SideBarMain() {
           <div>
             <SidebarLink
               link={{
-                label: "Rahul Gujjjar",
-                href: "/profile",
+                label: session?.user?.name || 'user',
+                href: "/profile/",
                 icon: (
                   <Image
-                    src="/placeholder.png"
+                    src={session?.user?.image || "/placeholder.png"}
                     className="h-7 w-7 flex-shrink-0 rounded-full"
                     width={50}
                     height={50}
