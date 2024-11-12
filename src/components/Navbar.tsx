@@ -1,6 +1,5 @@
 'use client'
 
-import { signIn, signOut } from 'next-auth/react'
 import Image from 'next/image'
 import { ChevronDown } from 'lucide-react'
 import {
@@ -11,15 +10,17 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
 import { githubSignInAction, userSignOutAction } from '@/app/actions/authActions'
+import Link from 'next/link'
 
-export default function Navbar({session}:any) {
-
+export default function Navbar({session}: any) {
   return (
     <nav className="bg-white border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
+            <Link href={'/'}>
             <span className="text-2xl font-bold text-gray-800">doubtGreek</span>
+            </Link>
           </div>
           
           <div className="ml-6 flex items-center">
