@@ -15,6 +15,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  questions      Question[]
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -49,4 +50,26 @@ model Session {
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Question {
+  id            String        @id @default(cuid())
+  title         String
+  content       String
+  userId        String       
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Answer        Answer[]
+
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt      
+}
+
+model Answer {
+  id           String         @id @default(cuid())
+  solution     String
+  questionId   String
+  questions    Question       @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
 }
